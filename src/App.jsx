@@ -1,15 +1,20 @@
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import 'tailwindcss/tailwind.css'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { GMap } from "./components/Maps/GMap"
+import { Board } from "./components/Board/Board"
+import { Header, Footer } from "./components/Body/Body"
 
 function App() {
+  const position = { lat: 53.24, lng: 10 };
   return (
-    <>
-    <div className="text-green-900 font-extrabold">Empezando</div>
-      
-    </>
+    <div className=" container mx-auto">
+      <Header />
+      <div className="grid grid-cols-2 gap-4 justify-center place-content-center ">
+        <Board />
+        <GMap />
+      </div>
+      <Footer />
+    </div>
     // <BrowserRouter>   
     // <Routes>
     //   <Route path="/" element={<Navigate to ="/home"/>} />
