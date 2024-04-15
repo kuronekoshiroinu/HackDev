@@ -3,7 +3,7 @@ import 'tailwindcss/tailwind.css'
 import { GMap } from "./components/Maps/GMap"
 import { Board } from "./components/Board/Board"
 import { Header, Footer } from "./components/Body/Body"
-
+import { ViewCards } from "./components/ViewCards/ViewCards"
 function App() {
   const position = { lat: 53.24, lng: 10 };
   return (
@@ -12,6 +12,7 @@ function App() {
       <div className="grid grid-cols-2 gap-4 justify-center place-content-center ">
         <Board />
         <GMap />
+        <ViewCards/>
       </div>
       <Footer />
     </div>
