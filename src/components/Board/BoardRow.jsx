@@ -21,7 +21,7 @@ function cardBuilder(ncards) {
 export function BoardRow() {
     // cardBuilder se ejecuta para cada BoardRow
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 align-baseline p-3">
             {
                 cardBuilder(3).map(
                     (cardtype) =>

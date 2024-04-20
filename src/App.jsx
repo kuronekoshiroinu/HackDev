@@ -7,14 +7,15 @@ import { ViewCards } from "./components/ViewCards/ViewCards"
 function App() {
   const position = { lat: 53.24, lng: 10 };
   return (
-    <div className=" container mx-auto">
+    <div className="bg-cover bg-first-wall w-full min-h-screen">
       <Header />
-      <div className="grid grid-cols-2 gap-4 justify-center place-content-center ">
+      <div className="grid grid-cols-2 p-4 place-content-center">
         <Board />
         <GMap />
-        <ViewCards/>
-      </div>
-      <Footer />
+        <div></div>
+        <ViewCards/>  
+      </div>  
+      <Footer /> 
     </div>
     // <BrowserRouter>   
     // <Routes>

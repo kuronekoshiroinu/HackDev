@@ -1,6 +1,6 @@
 export function InfoCard(args) {
     return (
-        <div className="rounded-md shadow-md flex flex-row w-1/2">
+        <div className="rounded-md shadow-md flex flex-row w-96 right-5">
             <img
                 src={args.location.imgurl}
                 width={100}

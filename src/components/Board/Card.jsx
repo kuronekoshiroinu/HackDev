@@ -7,7 +7,7 @@ function frontCard(direction) {
     if (direction == 90) rotation="rotate-90"
     else if (direction == 180) rotation="rotate-180"
     else if (direction == -90) rotation="-rotate-90"
-    let className = `shadow-md h-20 w-20 ${rotation}`
+    let className = `shadow-inner shadow-black h-20 w-20 ${rotation}`
 
     return (
         <div className={className}>
@@ -18,7 +18,7 @@ function frontCard(direction) {
 
 function reverseCard() {
     return (
-        <div className="shadow-md h-20 w-20 hover:w-24">
+        <div className=" shadow-2xl shadow-black h-20 w-20 hover:size-24">
             <img src={inter}></img>
         </div>
     )

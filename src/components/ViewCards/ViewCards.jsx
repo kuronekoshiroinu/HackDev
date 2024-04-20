@@ -34,13 +34,15 @@ export function ViewCards() {
 
     return (
         <div>
-            <button className="bg-orange-200 rounded-lg shadow-md" onClick={onClick}>ShowInfoCards</button>
+            <button className="bg-orange-500 text-neutral-700 rounded-lg w-36 h-auto " onClick={onClick}>ShowInfoCards</button>
+            <br/>
             {enable &&
-                <div>
+                <div >
                     <InfoCard location={firstLoc} />
                     <InfoCard location={secondLoc} />
                 </div>
             }
+            <br/>
         </div>
     )
 }
