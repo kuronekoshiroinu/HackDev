@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import redarrow from "../../assets/redarrow.svg"
 import inter from "../../assets/inter.svg"
+import { BoardContext, CardContext } from "./BoardContext";
+import { useContext } from "react";
 
 function frontCard(direction) {
-    let rotation = ""
-    if (direction == 90) rotation="rotate-90"
-    else if (direction == 180) rotation="rotate-180"
-    else if (direction == -90) rotation="-rotate-90"
+    let rotation = 'u'
+    if (direction == 'r') rotation = "rotate-90"
+    else if (direction == 'd') rotation = "rotate-180"
+    else if (direction == 'l') rotation = "-rotate-90"
     let className = `shadow-inner shadow-black h-20 w-20 ${rotation}`
 
     return (
@@ -24,16 +26,28 @@ function reverseCard() {
     )
 }
 
-export function Card({direction}) {
-    const [reverse, setReverse] = useState(true);
-    const onClick = function () {
-        reverse ? setReverse(false) : setReverse(true);
+export function Card({ id, onClick }) {
+    const boardContext = useContext(BoardContext)
+    const cardContext = useContext(CardContext)
+    const [flipedCard, setFlipedCard] = useState(false);
+    const index = id
+
+    useEffect(() => {
+        console.log('JIMBO:: New try:', cardContext);
+        setFlipedCard(false)
+    }, [cardContext]);
+
+    const arrow_direction = boardContext[index].direction
+
+    const handleClick = function () {
+        setFlipedCard(!flipedCard)
+        flipedCard ? onClick(0) : onClick(arrow_direction)
     }
 
     return (
-        <div onClick={onClick}>
+        <div onClick={handleClick}>
             {
-                reverse ? reverseCard() : frontCard(direction)
+                flipedCard ? frontCard(arrow_direction) : reverseCard()
             }
         </div >
     )
