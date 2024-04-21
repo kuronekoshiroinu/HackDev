@@ -33,31 +33,40 @@ export function Board() {
             6: { direction: 'r' },
         }
     )
+    const MAXFLIPS = 2
 
-    function cardsState(previous, current) {
+    function comparingCards(previous, current) {
+        if (current === 0) {
+            if (cartasvisibles.current > 0) cartasvisibles.current = cartasvisibles.current - 1
+        }
+        else {
+            cartasvisibles.current = cartasvisibles.current + 1
+        }
+
+        console.log("previous " + previous + " current " + current)
+        console.log("Cartas visibles " + cartasvisibles.current)
+        setCardPressed(current)
+
         if (previous === 0 && current === 0) return
 
+        // restart flipping cards and shuffling them 
         if (previous === current) {
-            console.log("previous " + previous + " current " + current)
+            cartasvisibles.current = 0
             setCardPressed(0)
             setTimeout(() => {
                 setOrientations(shufflingCards(Object.keys(orientations)))
                 setNtries(ntries + 1)
-            }, 1000)
-            cartasvisibles.current = 0
+            }, 600)
         }
 
-        else {
-            if (cartasvisibles.current > 1) {
-                setTimeout(() => {
-                    setNtries(ntries + 1)
-                }, 1000)
-                cartasvisibles.current = 0
-            }
-            console.log("previous " + previous + " current " + current)
-            setCardPressed(current)
+        // restart flipping cards
+        if (cartasvisibles.current > MAXFLIPS - 1) {
+            cartasvisibles.current = 0
+            setCardPressed(0)
+            setTimeout(() => {
+                setNtries(ntries + 1)
+            }, 600)
         }
-        cartasvisibles.current = cartasvisibles.current + 1
     }
 
     return (
@@ -69,8 +78,8 @@ export function Board() {
                             (value) => <Card
                                 key={value}
                                 id={value}
-                                onClick={(direction) => {
-                                    cardsState(cardPressed, direction)
+                                onClick={(currentdir) => {
+                                    comparingCards(cardPressed, currentdir)
                                 }}>
                             </Card>
                         )

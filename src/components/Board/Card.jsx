@@ -5,7 +5,7 @@ import { BoardContext, CardContext } from "./BoardContext";
 import { useContext } from "react";
 
 function frontCard(direction) {
-    let rotation = 'u'
+    let rotation = '' // default para up-arrow
     if (direction == 'r') rotation = "rotate-90"
     else if (direction == 'd') rotation = "rotate-180"
     else if (direction == 'l') rotation = "-rotate-90"
@@ -34,7 +34,7 @@ export function Card({ id, onClick }) {
 
     useEffect(() => {
         console.log('JIMBO:: New try:', cardContext);
-        setFlipedCard(false)
+        flipedCard && setFlipedCard(false)
     }, [cardContext]);
 
     const arrow_direction = boardContext[index].direction
