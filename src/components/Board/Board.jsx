@@ -4,7 +4,7 @@ import { Card } from "./Card";
 import { BoardContext, CardContext } from "./BoardContext";
 import { GameContext } from "../Body/BodyContext";
 
-const cardDirection = [
+const CARD_DIRECTION = [
     { direction: 'l' }, //left
     { direction: 'l' }, //left
     { direction: 'r' }, //right
@@ -16,7 +16,7 @@ const cardDirection = [
 function shufflingCards(keys) {
     let cards_data = {}
     keys.forEach((item) =>
-        cards_data[item] = { direction: cardDirection[Math.floor(Math.random() * cardDirection.length)].direction }
+        cards_data[item] = { direction: CARD_DIRECTION[Math.floor(Math.random() * CARD_DIRECTION.length)].direction }
     )
     return cards_data
 }
@@ -41,7 +41,7 @@ export function Board() {
         // }
         shufflingCards([1, 2, 3, 4, 5, 6, 7, 8, 9])
     )
-    const MAXFLIPS = 2
+    const MAXFLIPS = 3
 
     function comparingCards(previous, current) {
         if (current === 0) {
@@ -59,7 +59,10 @@ export function Board() {
 
         // restart flipping cards and shuffling them 
         if (previous === current) {
-            gamecontext.goalArrowDirection(current)
+            gamecontext.arrowDirectionStatus(current)
+            if (current === 'u' || current === 'l') gamecontext.healthStatus(3)
+            else gamecontext.healthStatus(5)
+        
             cartasvisibles.current = 0
             setCardPressed(0)
             setTimeout(() => {
@@ -70,6 +73,7 @@ export function Board() {
 
         // restart flipping cards
         if (cartasvisibles.current > MAXFLIPS - 1) {
+            gamecontext.healthStatus(-10)
             cartasvisibles.current = 0
             setCardPressed(0)
             setTimeout(() => {

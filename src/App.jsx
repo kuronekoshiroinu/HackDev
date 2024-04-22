@@ -6,6 +6,7 @@ import { Board } from "./components/Board/Board"
 import { Header, Footer } from "./components/Body/Body"
 import { WeatherContext } from "./components/Body/BodyContext"
 import { InfoCard } from "./components/InfoCard/InfoCard"
+import { HealthBar } from "./components/HealthBar/HealthBar"
 import { GameContext } from "./components/Body/BodyContext"
 import PLACES from "./assets/places"
 
@@ -17,6 +18,7 @@ function App() {
   const [currentloc, setLocation] = useState(PLACES['u']);
   const [bgWeather, setBgWeather] = useState(PLACES['u'].bg);
   const arrowDir = useRef('u')
+  const [currentHealth, setCurrentHealth] = useState(60)
   const locID = useRef(0)
 
   // const handleClick = () => {
@@ -28,7 +30,7 @@ function App() {
   //   console.log("APP: Changing weather")
   // }
 
-  const goalArrowDirection = function (newGoalDir) {
+  const arrowDirectionStatus = function (newGoalDir) {
     // replacing handleClick
     console.log(`APP: goto new dir ${newGoalDir}`)
     arrowDir.current = newGoalDir
@@ -37,16 +39,23 @@ function App() {
     console.log("APP: Changing weather")
   }
 
+  const healthStatus = function (newHealth) {
+    const newhealth = currentHealth + newHealth
+    if (newhealth < 0) setCurrentHealth(0)
+    else if (newhealth > 100) setCurrentHealth(100)
+    else setCurrentHealth(newhealth)
+  }
+
   return (
     <div className={`bg-cover w-full min-h-screen ${bgWeather}`}>
       <Header />
       <div className="grid grid-cols-2 p-4 place-content-center">
-        <GameContext.Provider value={{ goalArrowDirection }}>
+        <GameContext.Provider value={{ currentHealth, healthStatus, arrowDirectionStatus }}>
           <Board />
           <WeatherContext.Provider value={currentloc}>
             <GMap />
             {/* <div><button className="bg-orange-500 text-neutral-700 rounded-lg w-36 h-auto " onClick={handleClick}> CambiarClima</button></div> */}
-            <div />
+            <HealthBar />
             <InfoCard />
           </WeatherContext.Provider>
         </GameContext.Provider>
