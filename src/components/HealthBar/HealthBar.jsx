@@ -17,7 +17,7 @@ export function HealthBar() {
         <div className="h-8 w-3/4 bg-gray-300 rounded-full">
             <div
                 className="transition:width duration-150 ease-linear h-full rounded-full"
-                style={{ "width": `${health}%`, "background-color": getHealthColor() }}
+                style={{ "width": `${health}%`, "backgroundColor": getHealthColor() }}
             ></div>
             <div className="bg-slate-900 text-cyan-50 w-1/3 rounded-md text-center">Health</div>
         </div>

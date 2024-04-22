@@ -37,9 +37,14 @@ export function Card({ id, onClick }) {
         flipedCard && setFlipedCard(false)
     }, [cardContext]);
 
-    const arrow_direction = boardContext[index].direction
+    const arrow_direction = boardContext.orientations[index].direction
 
     const handleClick = function () {
+        // FIXING bug, evitando que volteen la misma carta
+        if (boardContext.flippedCards.current.includes(index)) return
+        !flipedCard && boardContext.addFlippedCards(index)
+        //-------------------------------------------------
+
         setFlipedCard(!flipedCard)
         flipedCard ? onClick(0) : onClick(arrow_direction)
     }

@@ -42,6 +42,7 @@ export function Board() {
         shufflingCards([1, 2, 3, 4, 5, 6, 7, 8, 9])
     )
     const MAXFLIPS = 3
+    const flippedCards = useRef([])
 
     function comparingCards(previous, current) {
         if (current === 0) {
@@ -60,10 +61,11 @@ export function Board() {
         // restart flipping cards and shuffling them 
         if (previous === current) {
             gamecontext.arrowDirectionStatus(current)
-            if (current === 'u' || current === 'l') gamecontext.healthStatus(3)
-            else gamecontext.healthStatus(5)
-        
+            if (current === 'u' || current === 'l') gamecontext.healthStatus(5)
+            else gamecontext.healthStatus(10)
+
             cartasvisibles.current = 0
+            flippedCards.current = []
             setCardPressed(0)
             setTimeout(() => {
                 setOrientations(shufflingCards(Object.keys(orientations)))
@@ -75,6 +77,7 @@ export function Board() {
         if (cartasvisibles.current > MAXFLIPS - 1) {
             gamecontext.healthStatus(-10)
             cartasvisibles.current = 0
+            flippedCards.current = []
             setCardPressed(0)
             setTimeout(() => {
                 setNtries(ntries + 1)
@@ -82,8 +85,14 @@ export function Board() {
         }
     }
 
+    const addFlippedCards = (cardID) => {
+        flippedCards.current.push(cardID)
+        console.log(`BOARD: new flipped cardID ${cardID}`)
+        console.log(flippedCards.current)
+    }
+
     return (
-        <BoardContext.Provider value={orientations}>
+        <BoardContext.Provider value={{ orientations, flippedCards, addFlippedCards }}>
             <CardContext.Provider value={ntries}>
                 <BoardRow>
                     {
