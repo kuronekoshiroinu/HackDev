@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useContext } from "react";
 import { BoardRow } from "./BoardRow"
 import { Card } from "./Card";
 import { BoardContext, CardContext } from "./BoardContext";
+import { GameContext } from "../Body/BodyContext";
 
 const cardDirection = [
     { direction: 'l' }, //left
@@ -19,6 +20,7 @@ function shufflingCards(keys) {
 }
 
 export function Board() {
+    const gamecontext = useContext(GameContext)
     const [cardPressed, setCardPressed] = useState(0)
     const [ntries, setNtries] = useState(0)
     const cartasvisibles = useRef(0)
@@ -51,6 +53,7 @@ export function Board() {
 
         // restart flipping cards and shuffling them 
         if (previous === current) {
+            gamecontext.goalArrowDirection(current)
             cartasvisibles.current = 0
             setCardPressed(0)
             setTimeout(() => {

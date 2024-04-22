@@ -1,11 +1,11 @@
 import { InfoCard } from "../InfoCard/InfoCard"
 import { useState } from 'react';
 
-
+// TODELETE: Just for testing multi-cardInfos
 export function ViewCards() {
     const [enable, setEnable] = useState(false);
-    const onClick= function(){
-        enable? setEnable(false): setEnable(true)
+    const onClick = function () {
+        enable ? setEnable(false) : setEnable(true)
     }
 
     const firstLoc = {
@@ -21,28 +21,17 @@ export function ViewCards() {
         info: "Barrow, Alaska, EE. UU. (71.2906° N, 156.7886° W) "
     }
 
-    // const climates = {
-    //     tropical: "tropical",
-    //     desertico: "desertico",
-    //     templado: "templado",
-    //     artico: "artico",
-    //     subtropical: "subtropcal",
-    //     mediterraneo: "mediterr",
-    //     subartico: "subartico",
-    //     ecuatorial: "ecuatorial"
-    // }
-
     return (
         <div>
             <button className="bg-orange-500 text-neutral-700 rounded-lg w-36 h-auto " onClick={onClick}>ShowInfoCards</button>
-            <br/>
+            <br />
             {enable &&
                 <div >
                     <InfoCard location={firstLoc} />
                     <InfoCard location={secondLoc} />
                 </div>
             }
-            <br/>
+            <br />
         </div>
     )
 }
