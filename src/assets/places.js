@@ -9,21 +9,21 @@ const PLACES = {
     },
     'u': {
         latlng: { lat: 71.2906, lng: -156.7886 },
-        imgurl: "https://imgs.search.brave.com/-8M0U3_n80LuPnoPRjGhigP_z-Ci6siC8hwb8K0bOm8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzI2Lzg0/LzEzLzI2ODQxMzJl/M2IzYjMyMWMyY2Vk/OTRmMWNmMGZiOGZh/LmpwZw",
+        imgurl: "https://images.unsplash.com/photo-1586964654173-3677f9fd3804?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         title: "Alaska",
         clime: "zona ártica",
         descr: "Barrow, Alaska, EE. UU",
         bg: "bg-first-wall"
     },
-    'r': {
+    'l': {
         latlng: { lat: 25, lng: -13 },
-        imgurl: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Sunset_in_Sahara.jpg",
+        imgurl: "https://images.unsplash.com/photo-1592172578991-51bac865e437?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         title: "Norte de Africa",
         clime: "zona desertica",
         descr: "Desierto de Sahara, norte de Africa",
         bg: "bg-second-wall"
     },
-    'l': {
+    'r': {
         latlng: { lat: 35.6895, lng: 139.6917 },
         imgurl: "https://img.freepik.com/foto-gratis/santuario-fushimi-inari-kioto-japon_335224-87.jpg?size=626&ext=jpg",
         title: "Japon",

@@ -20,7 +20,7 @@ function frontCard(direction) {
 
 function reverseCard() {
     return (
-        <div className=" shadow-2xl shadow-black h-20 w-20 hover:size-24">
+        <div className="transition duration-150 shadow-2xl shadow-black h-20 w-20 hover:scale-125">
             <img src={inter}></img>
         </div>
     )
