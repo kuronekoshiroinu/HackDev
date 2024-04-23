@@ -9,6 +9,7 @@ import { InfoCard } from "./components/InfoCard/InfoCard"
 import { HealthBar } from "./components/HealthBar/HealthBar"
 import { GameContext } from "./components/Body/BodyContext"
 import PLACES from "./assets/places"
+import notify from "./utils/utils"
 
 const LOCATIONS = Object.keys(PLACES).map(key => PLACES[key])
 
@@ -41,8 +42,14 @@ function App() {
 
   const healthStatus = function (newHealth) {
     const newhealth = currentHealth + newHealth
-    if (newhealth < 0) setCurrentHealth(0)
-    else if (newhealth > 100) setCurrentHealth(100)
+    if (newhealth < 0) {
+      setCurrentHealth(0)
+      notify("Me muero!", '💀')
+    }
+    else if (newhealth > 100) {
+      notify("Aqui me quedo!", '🥳')
+      setCurrentHealth(100)
+    }
     else setCurrentHealth(newhealth)
   }
 

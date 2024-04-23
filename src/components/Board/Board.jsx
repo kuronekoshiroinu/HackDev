@@ -1,8 +1,9 @@
 import { useRef, useState, useContext } from "react";
-import { BoardRow } from "./BoardRow"
+import { BoardRow } from "./BoardRow";
 import { Card } from "./Card";
 import { BoardContext, CardContext } from "./BoardContext";
 import { GameContext } from "../Body/BodyContext";
+import notify from "../../utils/utils";
 
 const CARD_DIRECTION = [
     { direction: 'l' }, //left
@@ -64,6 +65,12 @@ export function Board() {
             if (current === 'u' || current === 'l') gamecontext.healthStatus(5)
             else gamecontext.healthStatus(10)
 
+            // Simple Notifications
+            if (current === 'u') notify("Mucho frio pero aguanto +5", '🥶')
+            else if (current === 'l') notify("Mucho calor pero aguanto +5", '🥵')
+            else notify("Que sabroson +10", '🥴')
+            //----------------------------------
+
             cartasvisibles.current = 0
             flippedCards.current = []
             setCardPressed(0)
@@ -76,6 +83,9 @@ export function Board() {
         // restart flipping cards
         if (cartasvisibles.current > MAXFLIPS - 1) {
             gamecontext.healthStatus(-10)
+            // Simple Notifications
+            notify("Estoy perdid@!? -10", '🤬')
+            //----------------------------------
             cartasvisibles.current = 0
             flippedCards.current = []
             setCardPressed(0)

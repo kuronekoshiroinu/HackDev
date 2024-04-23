@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react"
 import { GameContext } from "../Body/BodyContext"
+import { Toaster } from "react-hot-toast"
 
 export function HealthBar() {
     const gamecontext = useContext(GameContext)
@@ -20,6 +21,7 @@ export function HealthBar() {
                 style={{ "width": `${health}%`, "backgroundColor": getHealthColor() }}
             ></div>
             <div className="bg-slate-900 text-cyan-50 w-1/3 rounded-md text-center">Health</div>
+            <Toaster containerStyle={{ position: 'relative' }} />
         </div>
     )
 }
