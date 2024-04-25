@@ -7,15 +7,6 @@ export const MarkerMove = () => {
   const [position, setPosition] = useState(weather.latlng);
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   const t = performance.now();
-    //   const lat = position.lat + (weather.lat)
-    //   const lng = Math.cos(t / 3000) * 5;
-
-    //   setPosition({lat, lng});
-    // }, 100);
-
-    // return () => clearInterval(interval);
     console.log("MARKER changing place")
     setPosition(weather.latlng)
   }, [weather]);

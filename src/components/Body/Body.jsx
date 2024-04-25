@@ -1,4 +1,3 @@
-import email from "../../assets/mail.svg"
 
 function Header() {
     return (

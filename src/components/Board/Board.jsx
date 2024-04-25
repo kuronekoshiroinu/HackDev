@@ -28,18 +28,6 @@ export function Board() {
     const [ntries, setNtries] = useState(0)
     const cartasvisibles = useRef(0)
     const [orientations, setOrientations] = useState(
-        // hardcoded card keys and orientations
-        // {
-        //     1: { direction: 'l' },
-        //     2: { direction: 'l' },
-        //     3: { direction: 'u' },
-        //     4: { direction: 'd' },
-        //     5: { direction: 'r' },
-        //     6: { direction: 'r' },
-        //     7: { direction: 'u' },
-        //     8: { direction: 'u' },
-        //     9: { direction: 'd' },
-        // }
         shufflingCards([1, 2, 3, 4, 5, 6, 7, 8, 9])
     )
     const MAXFLIPS = 3
@@ -66,9 +54,9 @@ export function Board() {
             else gamecontext.healthStatus(10)
 
             // Simple Notifications
-            if (current === 'u') notify("Mucho frio pero aguanto +5", '🥶')
-            else if (current === 'l') notify("Mucho calor pero aguanto +5", '🥵')
-            else notify("Que sabroson +10", '🥴')
+            if (current === 'u') notify("Cold place but I can survive +5", '🥶')
+            else if (current === 'l') notify("Hot place but I can survive +5", '🥵')
+            else notify("I don't want to leave +10", '🥴')
             //----------------------------------
 
             cartasvisibles.current = 0
@@ -82,9 +70,9 @@ export function Board() {
 
         // restart flipping cards
         if (cartasvisibles.current > MAXFLIPS - 1) {
-            gamecontext.healthStatus(-10)
+            gamecontext.healthStatus(-8)
             // Simple Notifications
-            notify("Estoy perdid@!? -10", '🤬')
+            notify("I'm lost, thanks! -8", '🤬')
             //----------------------------------
             cartasvisibles.current = 0
             flippedCards.current = []
