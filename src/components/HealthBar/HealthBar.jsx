@@ -10,12 +10,14 @@ export function HealthBar() {
     }, [gamecontext])
 
     function getHealthColor() {
-        if (health < 50) return "red"
-        return '#00ff00'
+        if (health < 25) return '#B03A2E'
+        else if (health < 50) return '#CA6F1E'
+        else if (health < 75) return '#F1C40F'
+        else return '#27AE60'
     }
 
     return (
-        <div className="h-8 w-3/4 bg-gray-300 rounded-full">
+        <div className="h-8 w-3/4 bg-gray-300 rounded-full ">
             <div
                 className="transition:width duration-150 ease-linear h-full rounded-full"
                 style={{ "width": `${health}%`, "backgroundColor": getHealthColor() }}
